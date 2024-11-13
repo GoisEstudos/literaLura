@@ -1,0 +1,32 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+@Con
+public class MimeTypeUrlConverter implements AttributeConverter<Map<String, String>, String> {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Override
+    public String convertToDatabaseColumn(Map<String, String> mimeUrls) {
+        try {
+            return objectMapper.writeValueAsString(mimeUrls);
+        } catch (JsonProcessingException e) {
+            throw new IllegalArgumentException("Erro ao converter Map para JSON", e);
+        }
+    }
+
+    @Override
+    public Map<String, String> convertToEntityAttribute(String mimeUrlsJson) {
+        try {
+            return objectMapper.readValue(mimeUrlsJson, HashMap.class);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Erro ao converter JSON para Map", e);
+        }
+    }
+}
