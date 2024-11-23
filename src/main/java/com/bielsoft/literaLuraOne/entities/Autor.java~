@@ -1,0 +1,32 @@
+package com.bielsoft.literaLuraOne.entities;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+public class Autor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @JsonAlias("name")
+    private String nome;
+    @JsonAlias("birth_year")
+    private Integer nascimento;
+    @JsonAlias("death_year")
+    private Integer falecimento;
+
+    public Autor() {
+    }
+
+    public Autor(String name, Integer birthDate, Integer deathDate) {
+        this.nome = name;
+        this.nascimento = birthDate;
+        this.falecimento = deathDate;
+    }
+}

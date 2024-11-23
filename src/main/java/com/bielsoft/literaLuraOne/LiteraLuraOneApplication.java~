@@ -1,0 +1,13 @@
+package com.bielsoft.literaLuraOne;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class LiteraLuraOneApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(LiteraLuraOneApplication.class, args);
+	}
+
+}

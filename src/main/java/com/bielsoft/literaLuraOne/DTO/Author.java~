@@ -1,0 +1,6 @@
+package com.bielsoft.literaLuraOne.DTO;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+public record Author(@JsonAlias("birth_year") int birthYear,) {
+}
